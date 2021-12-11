@@ -30,9 +30,6 @@ class RandomWalk {
     const nextUnderlyingPrice = this.underlyingPrices[previousPriceIndex] * p1;
     const nextLeveraged2xPrice = this.leveragedPrices2x[previousPriceIndex] * p2;
 
-    console.log(nextLeveraged2xPrice * 2);
-
-
     return {
       nextUnderlyingPrice,
       nextLeveraged2xPrice,
