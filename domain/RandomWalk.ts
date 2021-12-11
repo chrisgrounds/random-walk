@@ -40,6 +40,7 @@ class RandomWalk {
 
   walk(): WalkResult {
     for (let i = 0; i < this.params.iterations; i++) {
+    for (let i = 1; i < this.params.iterations; i++) {
       const { nextUnderlyingPrice, nextLeveraged2xPrice } = this.step();
 
       this.underlyingPrices[i] = nextUnderlyingPrice;
