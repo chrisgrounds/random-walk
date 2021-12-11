@@ -46,7 +46,7 @@ const Home: NextPage = () => {
   const [leveraged2xStartPrice, setleveraged2xStartPrice] = useState(870);
   const [volatility, setVolatility] = useState(3);
   const [floorPrice, setFloorPrice] = useState(800);
-  const [iterations, setIterations] = useState(20);
+  const [iterations, setIterations] = useState(50);
   const [fatTailed, setFatTailed] = useState(false);
   const [leveraged, setLeveraged] = useState(false);
 
