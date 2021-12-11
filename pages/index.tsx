@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import Script from 'next/script'
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Chart from 'chart.js/auto';
 
 import RandomWalkParameters from "../domain/RandomWalkParameters";
 import RandomWalk from "../domain/RandomWalk";
@@ -11,6 +11,7 @@ import WalkResult from "../domain/WalkResult";
 import ChartDataset from "../domain/ChartDataset";
 
 import FormField from "../components/FormField";
+import styles from '../styles/Home.module.css'
 
 const constructChart = (context: HTMLCanvasElement, dataset: ChartDataset[]): any => {
   // @ts-ignore
@@ -84,7 +85,6 @@ const Home: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <Script src="https://cdn.jsdelivr.net/npm/chart.js"></Script>
 
       <Head>
         <title>Random walk</title>
