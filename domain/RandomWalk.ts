@@ -16,10 +16,9 @@ class RandomWalk {
   generatePercentChange(seed: number, leverage: number = 1): number {
     const percentChange = seed * this.params.volatility;
 
-    if (seed < 0.5) {
-      return 1 - (percentChange * leverage * 0.01);
-    }
-    return 1 + (percentChange * leverage * 0.01);
+    return (seed < 0.5)
+      ? 1 - (percentChange * leverage * 0.01)
+      : 1 + (percentChange * leverage * 0.01);
   }
 
   step(): StepResult {
