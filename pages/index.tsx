@@ -84,7 +84,7 @@ const Home: NextPage = () => {
 
       chart = constructChart(ctx, [underlyingData, leveraged2xData, leveraged3xData]);
     }
-  }, [underlyingStartPrice, leveraged2xStartPrice, volatility, iterations]);
+  }, [underlyingStartPrice, leveraged2xStartPrice, leveraged3xStartPrice, volatility, iterations]);
 
   return (
     <div className={styles.container}>
