@@ -13,14 +13,25 @@ class RandomWalk {
     this.leveragedPrices2x = [this.params.leveraged2xStartPrice];
   }
 
+  generatePercentChange(seed: number, leverage: number = 1): number {
+    const percentChange = seed * this.params.volatility;
+
+    return 1 + (percentChange * leverage * 0.01);
+  }
+
   step(): StepResult {
-    const percentChange = Math.random() * this.params.volatility;
+    const randomNumber = Math.random();
+
+    const p1 = this.generatePercentChange(randomNumber);
+    const p2 = this.generatePercentChange(randomNumber, 2);
 
     const previousPriceIndex = this.underlyingPrices.length - 1;
-    const percentChangeAsDecimal = 1 + (percentChange * 0.01);
 
-    const nextUnderlyingPrice = this.underlyingPrices[previousPriceIndex] * percentChangeAsDecimal;
-    const nextLeveraged2xPrice = this.leveragedPrices2x[previousPriceIndex] * percentChangeAsDecimal * 2;
+    const nextUnderlyingPrice = this.underlyingPrices[previousPriceIndex] * p1;
+    const nextLeveraged2xPrice = this.leveragedPrices2x[previousPriceIndex] * p2;
+
+    console.log(nextLeveraged2xPrice * 2);
+
 
     return {
       nextUnderlyingPrice,
