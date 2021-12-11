@@ -1,10 +1,10 @@
-interface IChartDataset {
+interface RenderableChartDataset {
   label: string;
   prices: number[];
   borderColor: string;
 };
 
-class ChartDataset implements IChartDataset {
+class ChartDataset implements RenderableChartDataset {
   label: string;
   prices: number[];
   borderColor: string;
