@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { NextPage } from 'next'
+import Script from 'next/script'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
@@ -83,7 +84,7 @@ const Home: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <Script src="https://cdn.jsdelivr.net/npm/chart.js"></Script>
 
       <Head>
         <title>Random walk</title>
