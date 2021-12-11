@@ -44,11 +44,11 @@ let chart;
 const Home: NextPage = () => {
   const [underlyingStartPrice, setUnderlyingStartPrice] = useState(1009);
   const [leveraged2xStartPrice, setleveraged2xStartPrice] = useState(870);
+  const [leveraged3xStartPrice, setleveraged3xStartPrice] = useState(2.50);
   const [volatility, setVolatility] = useState(3);
   const [floorPrice, setFloorPrice] = useState(800);
   const [iterations, setIterations] = useState(50);
   const [fatTailed, setFatTailed] = useState(false);
-  const [leveraged, setLeveraged] = useState(false);
 
   useEffect(() => {
     if (document) {
@@ -64,6 +64,7 @@ const Home: NextPage = () => {
       const randomWalkConfig: RandomWalkParameters = {
         underlyingStartPrice: underlyingStartPrice,
         leveraged2xStartPrice: leveraged2xStartPrice,
+        leveraged3xStartPrice: leveraged3xStartPrice,
         floorPrice: 900,
         fatTailed: false,
         iterations: iterations,
@@ -75,11 +76,13 @@ const Home: NextPage = () => {
 
       const underlyingPrices: number[] = walkResult.underlyingPrices;
       const leveraged2xPrice: number[] = walkResult.leveragedPrices2x;
+      const leveraged3xPrice: number[] = walkResult.leveragedPrices3x;
 
       const underlyingData = new ChartDataset("Underlying price", underlyingPrices, "rgba(255, 99, 132, 1)");
       const leveraged2xData = new ChartDataset("2x price", leveraged2xPrice, "rgba(15, 99, 132, 1)");
+      const leveraged3xData = new ChartDataset("3x price", leveraged3xPrice, "rgba(100, 99, 25, 1)");
 
-      chart = constructChart(ctx, [underlyingData, leveraged2xData]);
+      chart = constructChart(ctx, [underlyingData, leveraged2xData, leveraged3xData]);
     }
   }, [underlyingStartPrice, leveraged2xStartPrice, volatility, iterations]);
 
@@ -112,6 +115,12 @@ const Home: NextPage = () => {
             label="2x Leveraged Start Price"
             value={leveraged2xStartPrice}
             onChange={(e) => { setleveraged2xStartPrice(parseFloat(e.target.value)) }}
+          />
+
+          <FormField
+            label="3x Leveraged Start Price"
+            value={leveraged3xStartPrice}
+            onChange={(e) => { setleveraged3xStartPrice(parseFloat(e.target.value)) }}
           />
 
           <FormField
