@@ -11,7 +11,8 @@ import ChartDataset from "../domain/ChartDataset";
 
 import FormField from "../components/FormField";
 
-const constructChart = (context: HTMLElement, dataset: ChartDataset[]): any => {
+const constructChart = (context: HTMLCanvasElement, dataset: ChartDataset[]): any => {
+  // @ts-ignore
   return new Chart(context, {
     type: 'line',
     data: {
@@ -26,6 +27,7 @@ const constructChart = (context: HTMLElement, dataset: ChartDataset[]): any => {
     },
     options: {
       scales: {
+        // @ts-ignore
         y: {
           beginAtZero: true
         }
@@ -45,13 +47,15 @@ const Home: NextPage = () => {
   const [fatTailed, setFatTailed] = useState(false);
   const [leveraged, setLeveraged] = useState(false);
 
-
   useEffect(() => {
     if (document) {
+      // @ts-ignore
       if (chart) {
+        // @ts-ignore
         chart.destroy();
       }
 
+      // @ts-ignore
       const ctx = document.getElementById('myChart').getContext('2d');
 
       const randomWalkConfig: RandomWalkParameters = {
