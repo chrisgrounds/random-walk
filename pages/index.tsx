@@ -9,6 +9,8 @@ import RandomWalk from "../domain/RandomWalk";
 import WalkResult from "../domain/WalkResult";
 import ChartDataset from "../domain/ChartDataset";
 
+import FormField from "../components/FormField";
+
 const constructChart = (context: HTMLElement, dataset: ChartDataset[]): any => {
   return new Chart(context, {
     type: 'line',
@@ -94,25 +96,29 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          <div>
-            <label>Underlying Start Price</label>
-            <input value={underlyingStartPrice} type="number" step="0.01" onChange={(e) => { setUnderlyingStartPrice(parseFloat(e.target.value)) }} />
-          </div>
+          <FormField
+            label="Underlying Start Price"
+            value={underlyingStartPrice}
+            onChange={(e) => { setUnderlyingStartPrice(parseFloat(e.target.value)) }}
+          />
 
-          <div>
-            <label>2x Leveraged Start Price</label>
-            <input value={leveraged2xStartPrice} type="number" step="0.01" onChange={(e) => { setleveraged2xStartPrice(parseFloat(e.target.value)) }} />
-          </div>
+          <FormField
+            label="2x Leveraged Start Price"
+            value={leveraged2xStartPrice}
+            onChange={(e) => { setleveraged2xStartPrice(parseFloat(e.target.value)) }}
+          />
 
-          <div>
-            <label>Volatility %</label>
-            <input value={volatility} type="number" step="0.01" onChange={(e) => { setVolatility(parseFloat(e.target.value)) }} />
-          </div>
+          <FormField
+            label="Volatility %"
+            value={volatility}
+            onChange={(e) => { setVolatility(parseFloat(e.target.value)) }}
+          />
 
-          <div>
-            <label>Iterations</label>
-            <input value={iterations} type="number" onChange={(e) => { setIterations(parseFloat(e.target.value)) }} />
-          </div>
+          <FormField
+            label="Iterations"
+            value={iterations}
+            onChange={(e) => { setIterations(parseFloat(e.target.value)) }}
+          />
         </div>
 
         <div className="chart-container">
