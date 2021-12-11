@@ -18,7 +18,7 @@ const constructChart = (context: HTMLElement, dataset: ChartDataset[]): any => {
         label: d.label,
         data: d.prices,
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
+        borderColor: d.borderColor,
         borderWidth: 1
       }))
     },
@@ -35,7 +35,8 @@ const constructChart = (context: HTMLElement, dataset: ChartDataset[]): any => {
 let chart;
 
 const Home: NextPage = () => {
-  const [startPrice, setStartPrice] = useState(1009);
+  const [underlyingStartPrice, setUnderlyingStartPrice] = useState(1009);
+  const [leveraged2xStartPrice, setleveraged2xStartPrice] = useState(870);
   const [volatility, setVolatility] = useState(3);
   const [floorPrice, setFloorPrice] = useState(800);
   const [iterations, setIterations] = useState(20);
@@ -52,8 +53,8 @@ const Home: NextPage = () => {
       const ctx = document.getElementById('myChart').getContext('2d');
 
       const randomWalkConfig: RandomWalkParameters = {
-        underlyingStartPrice: startPrice,
-        leveraged2xStartPrice: 870,
+        underlyingStartPrice: underlyingStartPrice,
+        leveraged2xStartPrice: leveraged2xStartPrice,
         floorPrice: 900,
         fatTailed: false,
         iterations: iterations,
@@ -66,12 +67,12 @@ const Home: NextPage = () => {
       const underlyingPrices: number[] = walkResult.underlyingPrices;
       const leveraged2xPrice: number[] = walkResult.leveragedPrices2x;
 
-      const underlyingData = new ChartDataset("Underlying price", underlyingPrices);
-      const leveraged2xData = new ChartDataset("2x price", leveraged2xPrice);
+      const underlyingData = new ChartDataset("Underlying price", underlyingPrices, "rgba(255, 99, 132, 1)");
+      const leveraged2xData = new ChartDataset("2x price", leveraged2xPrice, "rgba(15, 99, 132, 1)");
 
       chart = constructChart(ctx, [underlyingData, leveraged2xData]);
     }
-  }, [startPrice, volatility, iterations]);
+  }, [underlyingStartPrice, leveraged2xStartPrice, volatility, iterations]);
 
   return (
     <div className={styles.container}>
@@ -94,8 +95,13 @@ const Home: NextPage = () => {
 
         <div className={styles.grid}>
           <div>
-            <label>Start Price</label>
-            <input value={startPrice} type="number" step="0.01" onChange={(e) => { setStartPrice(parseFloat(e.target.value)) }} />
+            <label>Underlying Start Price</label>
+            <input value={underlyingStartPrice} type="number" step="0.01" onChange={(e) => { setUnderlyingStartPrice(parseFloat(e.target.value)) }} />
+          </div>
+
+          <div>
+            <label>2x Leveraged Start Price</label>
+            <input value={leveraged2xStartPrice} type="number" step="0.01" onChange={(e) => { setleveraged2xStartPrice(parseFloat(e.target.value)) }} />
           </div>
 
           <div>
