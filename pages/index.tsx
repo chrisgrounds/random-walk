@@ -36,6 +36,7 @@ const constructChart = (context: HTMLCanvasElement, dataset: ChartDataset[]): an
   });
 }
 
+// @ts-ignore
 let chart;
 
 const Home: NextPage = () => {
