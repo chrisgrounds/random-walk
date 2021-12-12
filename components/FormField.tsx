@@ -4,7 +4,7 @@ const FormField = ({ label, value, onChange }: { label: string; value: number, o
       display: "flex",
       flexDirection: "row",
       gap: "1rem",
-      alignItems: "end",
+      alignItems: "center",
       justifyContent: "end",
       width: "100%",
     }}>
