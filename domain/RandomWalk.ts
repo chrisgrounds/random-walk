@@ -15,20 +15,21 @@ class RandomWalk {
     this.leveragedPrices3x = [this.params.leveraged3xStartPrice];
   }
 
-  generatePercentChange(seed: number, leverage: number = 1): number {
+  generatePercentChange(sign: boolean, seed: number, leverage: number = 1): number {
     const percentChange = seed * this.params.volatility;
 
-    return (seed < 0.5)
-      ? 1 - (percentChange * leverage * 0.01)
-      : 1 + (percentChange * leverage * 0.01);
+    return (sign)
+      ? 1 + (percentChange * leverage * 0.01)
+      : 1 - (percentChange * leverage * 0.01);
   }
 
   step(): StepResult {
     const randomNumber = Math.random();
+    const signIsPositive = Math.random() > 0.5;
 
-    const p1 = this.generatePercentChange(randomNumber);
-    const p2 = this.generatePercentChange(randomNumber, 2);
-    const p3 = this.generatePercentChange(randomNumber, 3);
+    const p1 = this.generatePercentChange(signIsPositive, randomNumber);
+    const p2 = this.generatePercentChange(signIsPositive, randomNumber, 2);
+    const p3 = this.generatePercentChange(signIsPositive, randomNumber, 3);
 
     const previousPriceIndex = this.underlyingPrices.length - 1;
 
@@ -51,6 +52,9 @@ class RandomWalk {
       this.leveragedPrices2x[i] = nextLeveraged2xPrice;
       this.leveragedPrices3x[i] = nextLeveraged3xPrice;
     }
+
+    console.log("times the percent changed is positive: " + this.positive);
+    console.log("times the percent changed is negative: " + this.negative);
 
     return {
       underlyingPrices: this.underlyingPrices,
