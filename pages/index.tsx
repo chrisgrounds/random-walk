@@ -96,9 +96,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">A Random Walk!</a>
-        </h1>
+        <h1 className={styles.title}>Welcome to <span className={styles.emphasis}>A Random Walk!</span></h1>
 
         <p className={styles.description}>
           Generate a random walk by changing the values below
