@@ -66,7 +66,7 @@ const Home: NextPage = () => {
         leveraged2xStartPrice: leveraged2xStartPrice,
         leveraged3xStartPrice: leveraged3xStartPrice,
         floorPrice: 900,
-        fatTailed: false,
+        fatTailed: fatTailed,
         iterations: iterations,
         volatility: volatility,
       };
@@ -83,7 +83,7 @@ const Home: NextPage = () => {
 
       chart = constructChart(ctx, [underlyingData, leveraged2xData, leveraged3xData]);
     }
-  }, [underlyingStartPrice, leveraged2xStartPrice, leveraged3xStartPrice, volatility, iterations]);
+  }, [underlyingStartPrice, leveraged2xStartPrice, leveraged3xStartPrice, volatility, iterations, fatTailed]);
 
   return (
     <div className={styles.container}>

@@ -15,8 +15,14 @@ class RandomWalk {
     this.leveragedPrices3x = [this.params.leveraged3xStartPrice];
   }
 
-  generatePercentChange(sign: boolean, seed: number, leverage: number = 1): number {
-    const percentChange = seed * this.params.volatility;
+  shouldActivateFatTailEvent() {
+    return Math.random() < 0.01;
+  }
+
+  generatePercentChange(sign: boolean, seed: number, leverage: number = 1, fatTailEvent: boolean): number {
+    const volatility = fatTailEvent ? this.params.volatility * 10 : this.params.volatility;
+
+    const percentChange = seed * volatility;
 
     return (sign)
       ? 1 + (percentChange * leverage * 0.01)
@@ -27,9 +33,11 @@ class RandomWalk {
     const randomNumber = Math.random();
     const signIsPositive = Math.random() > 0.5;
 
-    const p1 = this.generatePercentChange(signIsPositive, randomNumber);
-    const p2 = this.generatePercentChange(signIsPositive, randomNumber, 2);
-    const p3 = this.generatePercentChange(signIsPositive, randomNumber, 3);
+    const fatTailEvent = this.params.fatTailed && this.shouldActivateFatTailEvent();
+
+    const p1 = this.generatePercentChange(signIsPositive, randomNumber, 1, fatTailEvent);
+    const p2 = this.generatePercentChange(signIsPositive, randomNumber, 2, fatTailEvent);
+    const p3 = this.generatePercentChange(signIsPositive, randomNumber, 3, fatTailEvent);
 
     const previousPriceIndex = this.underlyingPrices.length - 1;
 
