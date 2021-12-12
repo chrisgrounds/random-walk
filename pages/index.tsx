@@ -48,7 +48,7 @@ const Home: NextPage = () => {
   const [volatility, setVolatility] = useState(3);
   const [floorPrice, setFloorPrice] = useState(800);
   const [iterations, setIterations] = useState(50);
-  const [fatTailed, setFatTailed] = useState(false);
+  const [fatTailed, setFatTailed] = useState(true);
 
   useEffect(() => {
     if (document) {
