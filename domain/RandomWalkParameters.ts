@@ -6,7 +6,6 @@ interface RandomWalkParameters {
   floorPrice: number;
   iterations: number;
   fatTailed: boolean;
-  leveraged: boolean;
 }
 
 export default RandomWalkParameters;

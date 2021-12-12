@@ -53,9 +53,6 @@ class RandomWalk {
       this.leveragedPrices3x[i] = nextLeveraged3xPrice;
     }
 
-    console.log("times the percent changed is positive: " + this.positive);
-    console.log("times the percent changed is negative: " + this.negative);
-
     return {
       underlyingPrices: this.underlyingPrices,
       leveragedPrices2x: this.leveragedPrices2x,
