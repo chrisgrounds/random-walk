@@ -10,6 +10,7 @@ import WalkResult from "../domain/WalkResult";
 import ChartDataset from "../domain/ChartDataset";
 
 import FormField from "../components/FormField";
+import FormFieldBoolean from "../components/FormFieldBoolean";
 import styles from '../styles/Home.module.css'
 
 const constructChart = (context: HTMLCanvasElement, dataset: ChartDataset[]): any => {
@@ -129,6 +130,12 @@ const Home: NextPage = () => {
             label="Iterations"
             value={iterations}
             onChange={(e) => { setIterations(parseFloat(e.target.value)) }}
+          />
+
+          <FormFieldBoolean
+            label="Fat tailed?"
+            value={fatTailed}
+            onChange={(e) => { setFatTailed(e.target.checked) }}
           />
         </div>
 
