@@ -68,7 +68,6 @@ const Home: NextPage = () => {
         fatTailed: false,
         iterations: iterations,
         volatility: volatility,
-        leveraged: false,
       };
       const randomWalk: RandomWalk = new RandomWalk(randomWalkConfig);
       const walkResult: WalkResult = randomWalk.walk();
