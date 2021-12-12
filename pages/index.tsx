@@ -145,7 +145,7 @@ const Home: NextPage = () => {
       </main>
 
       <footer className={styles.footer}>
-        Created by Christopher Grounds
+        <a href="https://github.com/chrisgrounds">Created by Christopher Grounds</a>
       </footer>
     </div>
   )
