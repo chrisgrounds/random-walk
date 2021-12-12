@@ -1,8 +1,15 @@
 const FormField = ({ label, value, onChange }: { label: string; value: number, onChange: (e: any) => void }) => {
   return (
-    <div>
+    <div style={{
+      display: "flex",
+      flexDirection: "row",
+      gap: "1rem",
+      alignItems: "end",
+      justifyContent: "end",
+      width: "100%",
+    }}>
       <label>{label}</label>
-      <input value={value} type="number" step="0.01" onChange={onChange} />
+      <input style={{ padding: "0.33rem" }} value={value} type="number" step="0.01" onChange={onChange} />
     </div>
   )
 };

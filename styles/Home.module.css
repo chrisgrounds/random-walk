@@ -10,6 +10,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
 
 .footer {
@@ -51,7 +52,7 @@
 }
 
 .description {
-  margin: 4rem 0;
+  margin: 1rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
 }
@@ -72,6 +73,7 @@
   flex-wrap: wrap;
   max-width: 800px;
   flex-direction: column;
+  gap: 1rem;
 }
 
 .card {
