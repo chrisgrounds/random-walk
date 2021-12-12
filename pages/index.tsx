@@ -49,6 +49,7 @@ const Home: NextPage = () => {
   const [floorPrice, setFloorPrice] = useState(800);
   const [iterations, setIterations] = useState(50);
   const [fatTailed, setFatTailed] = useState(true);
+  const [generationToken, setGenerationToken] = useState(0);
 
   useEffect(() => {
     if (document) {
@@ -83,7 +84,7 @@ const Home: NextPage = () => {
 
       chart = constructChart(ctx, [underlyingData, leveraged2xData, leveraged3xData]);
     }
-  }, [underlyingStartPrice, leveraged2xStartPrice, leveraged3xStartPrice, volatility, iterations, fatTailed]);
+  }, [underlyingStartPrice, leveraged2xStartPrice, leveraged3xStartPrice, volatility, iterations, fatTailed, generationToken]);
 
   return (
     <div className={styles.container}>
@@ -137,6 +138,8 @@ const Home: NextPage = () => {
             value={fatTailed}
             onChange={(e) => { setFatTailed(e.target.checked) }}
           />
+
+          <button onClick={(e) => setGenerationToken(Math.random())}>Regenerate</button>
         </div>
 
         <div className="chart-container">
